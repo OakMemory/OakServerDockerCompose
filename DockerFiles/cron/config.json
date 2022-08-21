@@ -1,6 +1,10 @@
 [
   {
-    "schedule": "@every 6h",
+    "schedule": "@every 2s",
     "command": "/usr/sbin/logrotate /etc/logrotate.conf"
+  },
+  {
+    "schedule": "@every 2s",
+    "command": "cd /data && git add . && git commit -m \"$(date)\""
   }
 ]
