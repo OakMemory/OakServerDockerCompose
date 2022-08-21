@@ -1,0 +1,9 @@
+FROM azul/prime-debian
+VOLUME ./paper /paper
+RUN mv /etc/apt/sources.list /etc/apt/sources.list.old
+RUN echo deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free > /etc/apt/sources.list
+RUN apt update
+RUN apt install cron git
+COPY ./launch_cron.sh /launch_cron.sh
+RUN chmod 777 /launch_cron.sh
+ENTRYPOINT [ "bash", "/launch_cron.sh" ]

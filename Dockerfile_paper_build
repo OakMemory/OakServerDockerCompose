@@ -1,10 +1,21 @@
+FROM golang:1.19.0-bullseye
+RUN mv /etc/apt/sources.list /etc/apt/sources.list.old
+RUN echo deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free > /etc/apt/sources.list
+RUN apt install git
+WORKDIR /
+RUN git clone https://github.com/OakMemory/OakPaperHelper.git
+WORKDIR /OakPaperHelper
+RUN go build
 FROM azul/prime-debian
 VOLUME ./paper /paper
 RUN mv /etc/apt/sources.list /etc/apt/sources.list.old
 RUN echo deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free > /etc/apt/sources.list
 RUN apt update
 RUN apt install curl
-RUN curl https://api.papermc.io/v2/projects/paper/versions/1.19.2/builds/131/downloads/paper-1.19.2-131.jar > /paper-1.19.2-131.jar
+COPY --from=0 /OakPaperHelper/OakPaperHelper /OakPaperHelper
+RUN chmod 777 /OakPaperHelper
+WORKDIR /
+RUN curl $(./OakPaperHelper -d 1.19.2) > /paper-1.19.2-131.jar
 COPY ./launch_paper.sh /launch_paper.sh
 RUN chmod 777 /launch_paper.sh
 ENTRYPOINT [ "bash", "/launch_paper.sh" ]
