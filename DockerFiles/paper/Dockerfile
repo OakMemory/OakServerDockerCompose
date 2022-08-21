@@ -14,10 +14,10 @@ COPY --from=buildUtils /OakPaperHelper/OakPaperHelper /bin/oph
 COPY launch.sh /paper/launch.sh
 RUN chmod +x /bin/oph
 RUN apt update \
-    && apt install curl git -y \
-    && curl -L $(oph -d 1.19.2) -o /paper/paper.jar
+    && apt install curl git -y
 
-RUN chmod 544 /paper/launch_paper.sh
+RUN curl -L $(oph -d 1.19.2) -o /paper/paper.jar
+RUN chmod 544 /paper/launch.sh
 
 EXPOSE 25565
 VOLUME [ "/data" ]

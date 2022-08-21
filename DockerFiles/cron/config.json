@@ -1,6 +1,7 @@
 [
   {
     "schedule": "@every 6h",
-    "command": "/usr/bin/git --exec-dir=/data/ add . && /usr/bin/git --exec-dir=/data/ commit -m \"🧭 Backup: $(/bin/date)\""
+    "command": "/usr/bin/autobackup.sh",
+    "onstart": true
   }
 ]
