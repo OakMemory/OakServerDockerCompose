@@ -7,7 +7,7 @@ RUN git clone https://github.com/OakMemory/OakPaperHelper.git \
     && go build -v
 
 # Build PaperSpigot 
-FROM azul/prime-debian:17 as final
+FROM azul/prime:17 as final
 
 RUN mkdir /paper
 COPY --from=buildUtils /OakPaperHelper/OakPaperHelper /bin/oph
@@ -15,7 +15,7 @@ COPY launch_paper.sh /paper/launch_paper.sh
 RUN chmod +x /bin/oph
 RUN apt update \
     && apt install curl \
-    && bash `curl -L $(oph -d 1.19.2) -o /paper/core.jar`
+    && curl -L $(oph -d 1.19.2) -o /paper/core.jar
 
 RUN chmod 544 /launch_paper.sh
 
