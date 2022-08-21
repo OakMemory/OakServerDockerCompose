@@ -16,7 +16,7 @@ RUN chmod +x /bin/oph
 RUN apt update \
     && apt install curl \
     && ls -al /bin \
-    && bash `curl -L $(/bin/oph -d 1.19.2) -o /paper/core.jar`
+    && bash `curl -L $(echo 1) -o /paper/core.jar`
 
 RUN chmod 544 /launch_paper.sh
 
