@@ -2,8 +2,9 @@
 FROM golang:1.19.0-alpine as buildUtils
 RUN apk add git
 WORKDIR /
-RUN git clone https://github.com/OakMemory/OakPaperHelper.git
-RUN cd /OakPaperHelper && go build -v
+RUN git clone https://github.com/OakMemory/OakPaperHelper.git \
+    && cd /OakPaperHelper \
+    && go build -v
 
 # Build PaperSpigot 
 FROM azul/prime-debian:17 as final
