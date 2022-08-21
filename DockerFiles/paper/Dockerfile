@@ -11,7 +11,7 @@ FROM azul/prime-debian:17 as final
 RUN mkdir /paper
 COPY --from=buildUtils /OakPaperHelper/OakPaperHelper /bin/oph
 COPY launch_paper.sh /paper/launch_paper.sh
-RUN chmod +x /paper/oph
+RUN chmod +x /bin/oph
 RUN apt update && apt install curl
 RUN ls -al /paper/ && curl -L $(oph -d 1.19.2) -o /paper/core.jar
 
