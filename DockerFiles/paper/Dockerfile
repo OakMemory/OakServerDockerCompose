@@ -1,5 +1,5 @@
 # Build OakPaperHelper
-FROM golang:1.19.0-alpine as buildUtils
+FROM golang:1.19.0-bullseye as buildUtils
 RUN apk add git
 WORKDIR /
 RUN git clone https://github.com/OakMemory/OakPaperHelper.git \
@@ -7,7 +7,7 @@ RUN git clone https://github.com/OakMemory/OakPaperHelper.git \
     && go build -v
 
 # Build PaperSpigot 
-FROM azul/prime:17 as final
+FROM azul/prime-debian:17 as final
 
 RUN mkdir /paper
 COPY --from=buildUtils /OakPaperHelper/OakPaperHelper /bin/oph
