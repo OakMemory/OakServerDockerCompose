@@ -9,7 +9,7 @@ services:
       - ./data/paper:/data
   cron:
     build:
-      context: ./Dockerfiles/cron/
+      context: ./Dockerfiles/cron
       dockerfile: Dockerfile
     volumes:
       - ./data/paper:/data
