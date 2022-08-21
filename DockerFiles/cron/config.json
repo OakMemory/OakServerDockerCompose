@@ -1,6 +1,6 @@
 [
   {
     "schedule": "@every 6h",
-    "command": "/usr/sbin/logrotate /etc/logrotate.conf"
+    "command": "/usr/bin/git --exec-dir=/data/ add . && /usr/bin/git --exec-dir=/data/ commit -m \"🧭 Backup: $(/bin/date)\""
   }
 ]
