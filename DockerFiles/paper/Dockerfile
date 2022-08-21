@@ -13,7 +13,7 @@ COPY --from=buildUtils /OakPaperHelper/OakPaperHelper /bin/oph
 COPY launch_paper.sh /paper/launch_paper.sh
 RUN chmod +x /bin/oph
 RUN apt update && apt install curl
-RUN ls -al /paper/ && curl -L $(oph -d 1.19.2) -o /paper/core.jar
+RUN bash `curl -L $(/bin/oph -d 1.19.2) -o /paper/core.jar`
 
 RUN chmod 544 /launch_paper.sh
 
