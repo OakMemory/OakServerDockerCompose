@@ -21,4 +21,4 @@ RUN chmod 544 /paper/launch_paper.sh
 
 EXPOSE 25565
 VOLUME [ "/data" ]
-ENTRYPOINT [ "bash", "/launch_paper.sh" ]
+ENTRYPOINT [ "bash", "/paper/launch_paper.sh" ]
