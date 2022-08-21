@@ -1,0 +1,18 @@
+version: "3.4"
+
+services:
+  # PaperSpigot Server
+  paper:
+    build:
+      context: ./DockerFiles/paper/
+    volumes:
+      - ./data/paper:/data
+    ports:
+      - 25565:25565
+
+  # Auto job to backup server
+  cron:
+    build:
+      context: ./DockerFiles/cron/
+    volumes:
+      - ./data/paper:/data
