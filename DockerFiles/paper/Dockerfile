@@ -1,6 +1,6 @@
 # Build OakPaperHelper
 FROM golang:1.19.0-bullseye as buildUtils
-RUN apk add git
+RUN apt update && apt install git
 WORKDIR /
 RUN git clone https://github.com/OakMemory/OakPaperHelper.git \
     && cd /OakPaperHelper \
