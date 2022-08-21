@@ -15,11 +15,9 @@ COPY launch_paper.sh /paper/launch_paper.sh
 RUN chmod +x /bin/oph
 RUN apt update \
     && apt install curl -y \
-    && /bin/oph -d 1.19.2 \
-    && export DOWNLOAD_URL=$(oph -d 1.19.2) \
-    && curl -L $DOWNLOAD_URL -o /paper/core.jar
+    && curl -L $(oph -d 1.19.2) -o /paper/core.jar
 
-RUN chmod 544 /launch_paper.sh
+RUN chmod 544 /paper/launch_paper.sh
 
 EXPOSE 25565
 VOLUME [ "/data" ]
