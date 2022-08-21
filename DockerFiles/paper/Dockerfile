@@ -22,5 +22,6 @@ RUN mkdir /paper \
 
 RUN chmod 544 /launch_paper.sh
 
+EXPOSE 25565
 VOLUME [ "/data" ]
 ENTRYPOINT [ "bash", "/launch_paper.sh" ]
