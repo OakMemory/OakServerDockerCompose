@@ -13,7 +13,7 @@ COPY --from=buildUtils /OakPaperHelper/OakPaperHelper /usr/bin/oph
 COPY launch_paper.sh /launch_paper.sh
 RUN chmod +x /usr/bin/oph
 RUN mkdir /paper \
-    && curl -L $(oph -d 1.19.2) -o /paper/core.jar
+    && curl -L $(/usr/bin/oph -d 1.19.2) -o /paper/core.jar
 
 RUN chmod 544 /launch_paper.sh
 
