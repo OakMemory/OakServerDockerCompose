@@ -1,8 +1,6 @@
 # Build OakPaperHelper
 FROM golang:1.19.0-alpine as buildUtils
-RUN mv /etc/apt/sources.list /etc/apt/sources.list.old \
-    && echo deb https://mirrors.tuna.tsinghua.edu.cn/debian/ bullseye main contrib non-free > /etc/apt/sources.list \
-    && apt install git
+RUN apk add git
 WORKDIR /
 RUN git clone https://github.com/OakMemory/OakPaperHelper.git
 RUN cd /OakPaperHelper && go build
