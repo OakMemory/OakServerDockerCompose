@@ -8,12 +8,11 @@ RUN cd /OakPaperHelper && go build
 # Build PaperSpigot 
 FROM azul/prime-debian:17 as final
 
+RUN mkdir /paper
+COPY --from=buildUtils /OakPaperHelper/OakPaperHelper /paper
+COPY launch_paper.sh /paper/launch_paper.sh
 RUN apt update && apt install curl 
-COPY --from=buildUtils /OakPaperHelper/OakPaperHelper /usr/bin/oph
-COPY launch_paper.sh /launch_paper.sh
-RUN chmod +x /usr/bin/oph
-RUN mkdir /paper \
-    && curl -L $(/usr/bin/oph -d 1.19.2) -o /paper/core.jar
+RUN curl -L $(/paper/OakPaperHelper -d 1.19.2) -o /paper/core.jar
 
 RUN chmod 544 /launch_paper.sh
 
