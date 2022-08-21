@@ -16,4 +16,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build with DockerCompose
-        run: ls -al && pwd &&  docker-compose build
+        run: ls -al && pwd && ls -al ./data/ && ls -al ./data/paper && docker-compose build
