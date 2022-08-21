@@ -23,6 +23,6 @@ jobs:
       - name: Set up DockerCompose
         uses: KengoTODA/actions-setup-docker-compose@main
         with:
-        version: "2.6.0"
+          version: "2.6.0"
       - name: Build with DockerCompose
         run: docker-compose build
