@@ -15,7 +15,7 @@ COPY launch_paper.sh /paper/launch_paper.sh
 RUN chmod +x /bin/oph
 RUN apt update \
     && apt install curl -y \
-    && oph -d 1.19.2 \
+    && /bin/oph -d 1.19.2 \
     && export DOWNLOAD_URL=$(oph -d 1.19.2) \
     && curl -L $DOWNLOAD_URL -o /paper/core.jar
 
