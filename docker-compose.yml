@@ -3,13 +3,11 @@ version: "3.4"
 services:
   paper:
     build:
-      context: Dockerfiles/paper
-      dockerfile: Dockerfile
+      context: ./Dockerfiles/paper
     volumes:
       - ./data/paper:/data
   cron:
     build:
-      context: Dockerfiles/cron
-      dockerfile: Dockerfile
+      context: ./Dockerfiles/cron
     volumes:
       - ./data/paper:/data
