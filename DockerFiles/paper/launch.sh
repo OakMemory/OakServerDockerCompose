@@ -12,7 +12,7 @@ if [ ! -f $EULA_FILE ]; then
 fi
 
 if [[ "$USE_AUTHLIB_INJECT" != "false" ]]; then
-    $JAVA_PATH -javaagent:/paper/authlib.jar="$USE_AUTHLIB_SERVER" -jar /paper/paper.jar -Xmx="$MAX_MEM" -Xms="$MIM_MEM" "$JVM_ARGS"
+    $JAVA_PATH -server -javaagent:/paper/authlib.jar="$USE_AUTHLIB_SERVER" -Xmx"$MAX_MEM" -Xms"$MIM_MEM" "$JVM_ARGS" -jar /paper/paper.jar
 else
-    $JAVA_PATH -jar /paper/paper.jar -Xmx="$MAX_MEM" -Xms="$MIM_MEM" "$JVM_ARGS"
+    $JAVA_PATH -server -Xmx"$MAX_MEM" -Xms"$MIM_MEM" "$JVM_ARGS" -jar /paper/paper.jar
 fi
