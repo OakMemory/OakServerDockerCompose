@@ -3,6 +3,7 @@ version: "3.4"
 services:
   # PaperSpigot Server
   paper:
+    restart: always
     build:
       context: ./DockerFiles/paper/
       args:
@@ -16,6 +17,7 @@ services:
   # Auto job to backup server
   # This service must start up after PaperSpigot
   cron:
+    restart: always
     build:
       context: ./DockerFiles/cron/
     privileged: true
