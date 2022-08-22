@@ -10,6 +10,5 @@ git clone "$AUTHLIB_REPO" authlib
 cd authlib || exit
 git checkout "$AUTHLIB_VERSION"
 gradle build
-ls build/libs
 cd / || exit
 mv /authlib/build/libs/*.jar /authlib.jar
