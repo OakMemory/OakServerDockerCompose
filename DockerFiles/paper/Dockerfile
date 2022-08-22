@@ -24,8 +24,8 @@ FROM azul/prime-debian:17 as final
 
 RUN mkdir /paper
 COPY --from=buildUtils /OakPaperHelper/OakPaperHelper /bin/oph
-COPY launch.sh /paper/launch.sh
 COPY --from=buildAuthlibInjector /authlib.jar /paper/authlib.jar
+COPY launch.sh /paper/launch.sh
 RUN chmod +x /bin/oph
 RUN apt update \
     && apt install curl -y
@@ -33,11 +33,10 @@ RUN apt update \
 RUN curl -L $(oph -d 1.19.2) -o /paper/paper.jar
 RUN chmod 544 /paper/launch.sh
 
-ENV MAX_MEM=1024M
-ENV MIN_MEM=512M
-ENV JVM_ARGS= 
-ENV USE_AUTHLIB_INJECT=false
-ENV USE_AUTHLIB_SERVER=
+ENV MAX_MEM='1024M'
+ENV JVM_ARGS=-XX:-UseG1GC
+ENV USE_AUTHLIB_INJECT='false'
+ENV USE_AUTHLIB_SERVER=''
 EXPOSE 25565
 VOLUME [ "/data" ]
-ENTRYPOINT [ "bash", "/paper/launch.sh" ]
+ENTRYPOINT [ "bash","/paper/launch.sh" ]
