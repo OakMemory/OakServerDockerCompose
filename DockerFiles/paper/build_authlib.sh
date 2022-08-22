@@ -10,5 +10,6 @@ git clone "$AUTHLIB_REPO" authlib
 cd authlib || exit
 git checkout "$AUTHLIB_VERSION"
 gradle build
-
-mv /authlib/build/libs/authlib-injector-snapshot.dirty.jar /authlib.jar
+ls build/libs
+cd / || exit
+mv /authlib/build/libs/*.jar /authlib.jar
