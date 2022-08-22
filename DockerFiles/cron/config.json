@@ -3,5 +3,10 @@
     "schedule": "@every 6h",
     "command": "/usr/bin/autobackup.sh",
     "onstart": true
+  },
+  {
+    "schedule": "@every 24h",
+    "command": "/usr/bin/autobclean.sh",
+    "onstart": true
   }
 ]

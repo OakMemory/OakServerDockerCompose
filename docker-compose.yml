@@ -5,6 +5,9 @@ services:
   paper:
     build:
       context: ./DockerFiles/paper/
+      args:
+        - AUTHLIB_VERSION=v1.2.1
+        - AUTHLIB_REPO=https://github.com/OakMemory/AuthlibInjector
     volumes:
       - ./data/paper:/data
     ports:
@@ -15,6 +18,7 @@ services:
   cron:
     build:
       context: ./DockerFiles/cron/
+    privileged: true
     volumes:
       - ./data/paper:/data
       - /var/run/docker.sock.raw:/var/run/docker.sock:ro
