@@ -11,4 +11,4 @@ cd authlib || exit
 git checkout "$AUTHLIB_VERSION"
 gradle build
 
-mv authlib/build/libs/authlib-injector-"${AUTHLIB_VERSION:1}".jar authlib.jar
+mv authlib/build/libs/authlib-injector-snapshot.dirty.jar authlib.jar
