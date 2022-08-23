@@ -3,16 +3,26 @@ version: "3.4"
 services:
   # PaperSpigot Server
   paper:
+    restart: always
     build:
       context: ./DockerFiles/paper/
+      args:
+        - AUTHLIB_VERSION=v1.2.1
+        - AUTHLIB_REPO=https://github.com/OakMemory/AuthlibInjector
     volumes:
       - ./data/paper:/data
     ports:
       - 25565:25565
 
   # Auto job to backup server
+  # This service must start up after PaperSpigot
   cron:
+    restart: always
     build:
       context: ./DockerFiles/cron/
+    privileged: true
     volumes:
       - ./data/paper:/data
+      - /var/run/docker.sock.raw:/var/run/docker.sock:ro
+    depends_on:
+      - paper

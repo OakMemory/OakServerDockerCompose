@@ -1,6 +1,12 @@
 [
   {
     "schedule": "@every 6h",
-    "command": "/usr/sbin/logrotate /etc/logrotate.conf"
+    "command": "/usr/bin/autobackup.sh",
+    "onstart": true
+  },
+  {
+    "schedule": "@every 24h",
+    "command": "/usr/bin/autobclean.sh",
+    "onstart": true
   }
 ]
